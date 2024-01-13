@@ -24,6 +24,7 @@ class _MovieCarouselState extends State<MovieCarousel> {
   @override
   void initState() {
     super.initState();
+    getNowPlaying();
     _pageController = PageController(
       initialPage: 0,
       viewportFraction: 0.9,
@@ -41,6 +42,10 @@ class _MovieCarouselState extends State<MovieCarousel> {
     });
   }
 
+  void getNowPlaying() {
+    context.read<NowPlayingMoviesBloc>().add(GetNowPlayingMoviesEvent());
+  }
+
   void _initializeTimer() {
     _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
       if (_pageController.hasClients) {
@@ -53,7 +58,6 @@ class _MovieCarouselState extends State<MovieCarousel> {
       }
     });
   }
-
 
   @override
   void dispose() {
@@ -75,7 +79,7 @@ class _MovieCarouselState extends State<MovieCarousel> {
         } else if (state is NowPlayingMoviesEmptyState) {
           return const Center(child: Text('Empty Movie'));
         } else {
-          return const Center(child: Text(''));
+          return _buildLoadingState();
         }
       },
     );
@@ -152,7 +156,7 @@ class _MovieCarouselState extends State<MovieCarousel> {
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.0),
-                    color: Colors.black),
+                    color: AppColors.blackColor,),
               ),
             );
           },
@@ -204,9 +208,15 @@ class _MovieCarouselState extends State<MovieCarousel> {
           ),
         ),
       ),
-      errorWidget: (context, url, error) => Image.asset(
-        AppMedia.imageError,
-        fit: BoxFit.cover,
+      errorWidget: (context, url, error) => Shimmer.fromColors(
+        baseColor: AppColors.greyColor,
+        highlightColor: const Color(0xFFe1e1e1),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16.0),
+            color: AppColors.greyColor,
+          ),
+        ),
       ),
     );
   }
@@ -223,7 +233,7 @@ class _MovieCarouselState extends State<MovieCarousel> {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: index == _currentPageNotifier.value
-                ? Colors.black
+                ? AppColors.blackColor
                 : const Color(0xFFBBBBBB),
           ),
         ),

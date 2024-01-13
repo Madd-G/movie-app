@@ -44,7 +44,6 @@ Here are the steps to run the application:
 - get_it: ^7.6.4
 - http: ^1.1.2
 - intl: ^0.18.1
-- rxdart: ^0.27.7
 - shimmer: ^3.0.0
 - sqflite_sqlcipher: ^2.2.1
 

@@ -24,7 +24,6 @@ dependencies:
   get_it: ^7.6.4
   http: ^1.1.2
   intl: ^0.18.1
-  rxdart: ^0.27.7
   shimmer: ^3.0.0
   sqflite_sqlcipher: ^2.2.1
 
@@ -34,22 +33,7 @@ dev_dependencies:
 
   flutter_lints: ^3.0.0
   flutter_native_splash: ^2.3.9
-    #  flutter_launcher_icons: ^0.13.1
   flutter_launcher_icons: "^0.13.1"
-
-flutter_native_splash:
-  color: "#FFFFFF"
-  color_dark: "#272727"
-  image: assets/images/logo.png
-  image_dark: assets/images/logo.png
-
-  android_12:
-    color: "#FFFFFF"
-    color_dark: "#272727"
-    image: assets/images/logo.png
-    image_dark: assets/images/logo.png
-
-  web: false
 
 
 flutter_launcher_icons:

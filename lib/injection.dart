@@ -1,22 +1,13 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
-import 'package:movies_app/src/home/data/datasources/db/database_helper.dart';
-import 'package:movies_app/src/home/data/datasources/genre_local_data_source.dart';
-import 'package:movies_app/src/home/data/datasources/genre_remote_data_source.dart';
-import 'package:movies_app/src/home/data/datasources/movie_local_data_source.dart';
-import 'package:movies_app/src/home/data/datasources/movie_remote_data_source.dart';
+import 'package:movies_app/src/home/data/datasources/datasources.dart';
 import 'package:movies_app/src/home/data/repositories/genre_repository_impl.dart';
 import 'package:movies_app/src/home/data/repositories/movie_repository_impl.dart';
 import 'package:movies_app/src/home/domain/repositories/genre_repository.dart';
 import 'package:movies_app/src/home/domain/repositories/movie_repository.dart';
-import 'package:movies_app/src/home/domain/usecases/get_movies_by_genre.dart';
 import 'package:movies_app/src/home/domain/usecases/use_cases.dart';
-import 'package:movies_app/src/home/presentation/blocs/genre_bloc/genre_bloc.dart';
-import 'package:movies_app/src/home/presentation/blocs/movie_bloc/movie_bloc.dart';
-import 'package:movies_app/src/home/presentation/blocs/now_playing_movies_bloc/now_playing_movies_bloc.dart';
-
-import 'core/common/network_info.dart';
-import 'core/common/shared.dart';
+import 'package:movies_app/src/home/presentation/blocs/blocs.dart';
+import 'core/common/common.dart';
 
 final sl = GetIt.instance;
 

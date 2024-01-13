@@ -17,6 +17,16 @@ class _GenreListState extends State<GenreList> {
   final ValueNotifier<int> _currentPageNotifier = ValueNotifier<int>(0);
 
   @override
+  void initState() {
+    getGenre();
+    super.initState();
+  }
+
+  void getGenre() {
+    context.read<GenreBloc>().add(GetGenreEvent());
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<GenreBloc, GenreState>(
       builder: (context, state) {
@@ -48,7 +58,7 @@ class _GenreListState extends State<GenreList> {
         const SizedBox(height: 20.0),
         Container(
           padding: const EdgeInsets.only(left: 16.0),
-          color: Colors.white,
+          color: AppColors.whiteColor,
           height: 70.0,
           child: ListView.separated(
             itemCount: state.genres.length,
@@ -98,7 +108,7 @@ class _GenreListState extends State<GenreList> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  color: Colors.black,
+                  color: AppColors.blackColor,
                 ),
               ),
             ),
@@ -107,7 +117,7 @@ class _GenreListState extends State<GenreList> {
         const SizedBox(height: 15.0),
         Container(
           padding: const EdgeInsets.only(left: 16.0),
-          color: Colors.white,
+          color: AppColors.whiteColor,
           height: 70.0,
           child: ListView.separated(
             itemCount: itemCount,
@@ -151,7 +161,7 @@ class _GenreListState extends State<GenreList> {
               height: 70.0,
               width: 70.0,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.whiteColor,
                 borderRadius: const BorderRadius.all(Radius.circular(50.0)),
                 border: Border.all(
                     color:

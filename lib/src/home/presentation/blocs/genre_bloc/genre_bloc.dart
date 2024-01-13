@@ -13,16 +13,20 @@ class GenreBloc extends Bloc<GenreEvent, GenreState> {
   int currentPage = 0;
 
   GenreBloc(this.getGenres) : super(GenreEmptyState()) {
-    on<GetGenreEvent>((event, emit) async {
-      emit(GenreLoadingState());
-      final result = await getGenres.execute();
-      result.fold((failure) => emit(GenreErrorState(failure.message)),
+    on<GetGenreEvent>(
+      (event, emit) async {
+        emit(GenreLoadingState());
+        final result = await getGenres.execute();
+        result.fold(
+          (failure) => emit(GenreErrorState(failure.message)),
           (genresData) {
-        emit(GenreLoadedState(genresData));
-        if (genresData.isEmpty) {
-          emit(GenreEmptyState());
-        }
-      });
-    });
+            emit(GenreLoadedState(genresData));
+            if (genresData.isEmpty) {
+              emit(GenreEmptyState());
+            }
+          },
+        );
+      },
+    );
   }
 }
