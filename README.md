@@ -6,8 +6,8 @@ Here are the steps to run the application:
 
 1. **Clone the Repository:**
     ```bash
-    git clone git@github.com:Madd-G/movie-app-test.git
-    cd movie-app-test
+    git clone git@github.com:Madd-G/movie-app.git
+    cd movie-app
     ```
 
 2. **Generate Icon:**
